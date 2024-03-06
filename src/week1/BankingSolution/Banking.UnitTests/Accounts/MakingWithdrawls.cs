@@ -33,9 +33,26 @@ public class MakingWithdrawls
     public void AreAnyDecimalsAllowed()
     {
         var account = new BankAccount();
+        var openingBalance = account.GetBalance();
+        /*bool rightExceptionThrown = false;
 
-        account.Withdraw(-5230);
+        try
+        {
+            account.Withdraw(-5230);
+        }
+        catch (InvalidTransactionAmountException)
+        {
 
-        Assert.Equal(5000M, account.GetBalance());
+            rightExceptionThrown = true;
+        }
+        finally
+        {
+            Assert.Equal(5000M, account.GetBalance());
+            Assert.True(rightExceptionThrown);
+        }*/
+
+        Assert.Throws<InvalidTransactionAmountException>(() => account.Withdraw(-1.1M));
+
+        Assert.Equal(openingBalance, account.GetBalance());
     }
 }
