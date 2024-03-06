@@ -24,35 +24,53 @@ public class MakingWithdrawls
         var account = new BankAccount();
         var openingBalance = account.GetBalance();
 
-        account.Withdraw(account.GetBalance() + .01M);
+        Assert.Throws<OverdraftException>(() =>
+        {
+            account.Withdraw(account.GetBalance() + .01M);
+        });
 
         Assert.Equal(openingBalance, account.GetBalance());
     }
 
     [Fact]
-    public void AreAnyDecimalsAllowed()
+    public void CanWithdrawAllMoney()
+    {
+        var account = new BankAccount();
+
+        account.Withdraw(account.GetBalance());
+
+        Assert.Equal(0, account.GetBalance());
+    }
+
+    [Theory]
+    [InlineData(-1.0)]
+    [InlineData(0)]
+
+    public void ValidatesAmountForWithdraw(decimal amountToWithdraw)
     {
         var account = new BankAccount();
         var openingBalance = account.GetBalance();
-        /*bool rightExceptionThrown = false;
 
-        try
-        {
-            account.Withdraw(-5230);
-        }
-        catch (InvalidTransactionAmountException)
-        {
 
-            rightExceptionThrown = true;
-        }
-        finally
-        {
-            Assert.Equal(5000M, account.GetBalance());
-            Assert.True(rightExceptionThrown);
-        }*/
 
-        Assert.Throws<InvalidTransactionAmountException>(() => account.Withdraw(-1.1M));
+        Assert.Throws<InvalidTransactionAmountException>(() => account.Withdraw(amountToWithdraw));
 
         Assert.Equal(openingBalance, account.GetBalance());
+
+
+
+    }
+
+    [Fact]
+    public void MoneyStuff()
+    {
+        var pay = Money.FromUsd(122.23M);
+
+        Assert.Equal(122.23M, pay.Amount);
+
+        var account = new BankAccount();
+
+        account.Withdraw(pay);
+
     }
 }
