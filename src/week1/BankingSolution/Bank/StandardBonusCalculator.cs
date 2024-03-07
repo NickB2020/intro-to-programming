@@ -7,7 +7,9 @@ public class StandardBonusCalculator : ICalculateBonusesForDeposits
 
     private decimal CalculateBonus(decimal balance, decimal amountOfDeposit)
     {
-        return balance >= 5000M ? amountOfDeposit * .10M : 0;
+
+        return balance >= 5000M ? amountOfDeposit * .15M : 0;
+
     }
 
     public decimal CalculateDepositBonusFor(decimal currentBalance, decimal amountToDeposit)
@@ -15,5 +17,3 @@ public class StandardBonusCalculator : ICalculateBonusesForDeposits
         return CalculateBonus(currentBalance, amountToDeposit);
     }
 }
-
-
