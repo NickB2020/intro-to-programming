@@ -15,3 +15,5 @@ public class StandardBonusCalculator : ICalculateBonusesForDeposits
         return CalculateBonus(currentBalance, amountToDeposit);
     }
 }
+
+

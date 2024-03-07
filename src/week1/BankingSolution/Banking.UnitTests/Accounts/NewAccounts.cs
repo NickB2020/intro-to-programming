@@ -19,3 +19,4 @@ public class NewAccounts
         Assert.Equal(5000M, openingBalance);
     }
 }
+

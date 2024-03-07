@@ -23,3 +23,4 @@ public class MakingDeposits
         Assert.Equal(openingBalance + amountToDeposit, account.GetBalance());
     }
 }
+

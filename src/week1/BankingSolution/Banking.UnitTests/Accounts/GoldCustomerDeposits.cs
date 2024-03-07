@@ -28,3 +28,4 @@ public class GoldCustomerDeposits
         Assert.Equal(openingBalance + amountToDeposit + expectedBonus, account.GetBalance());
     }
 }
+
