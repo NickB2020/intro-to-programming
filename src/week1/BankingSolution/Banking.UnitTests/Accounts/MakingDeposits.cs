@@ -10,7 +10,7 @@ public class MakingDeposits
     public void MakingADespositIncreasesBalance(decimal amountToDeposit)
     {
         // Given
-        var account = new BankAccount();
+        var account = new BankAccount(new DummyBonusCalculator());
         // Get Balance is a "Query" - we are asking it for something.
         var openingBalance = account.GetBalance();
 
