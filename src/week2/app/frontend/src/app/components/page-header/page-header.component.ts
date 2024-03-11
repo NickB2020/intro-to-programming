@@ -6,12 +6,14 @@ import { Component } from '@angular/core';
   imports: [],
   template: `
     <header>
-      <h1 class="text-3xl font-bold">Our Angular Application</h1>
+      <h1 class="font-black text-3xl">Our Angular Application</h1>
       <p>Just Learning Here</p>
-   </header>
+    </header>
   `,
-  styles: ``
+  styles: ``,
 })
 export class PageHeaderComponent {
+  someThing = 'Tacos';
 
+  anotherThing = 'cheese';
 }
