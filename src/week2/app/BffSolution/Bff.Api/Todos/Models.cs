@@ -1,4 +1,6 @@
-﻿namespace Bff.Api.Todos;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Bff.Api.Todos;
 
 
 /* {
@@ -7,9 +9,9 @@
     "priority": "High" | "Low" | undefined
 } */
 
-
 public record CreateTodoRequest
 {
+    [Required, MinLength(3), MaxLength(124)]
     public string Description { get; set; } = string.Empty;
     public DateTimeOffset? DueDate { get; set; }
     public TodoPriority? Priority { get; set; }
@@ -19,12 +21,13 @@ public record CreateTodoRequest
 
 public enum TodoPriority { Low, High };
 
+
 /*{
-    "id": "38938938"
+    "id": "38938938",
     "dueDate": "893893",
     "description": "Buy Beer",
     "priority": "Low"
-}*/
+} */
 
 public record CreateTodoResponse
 {
