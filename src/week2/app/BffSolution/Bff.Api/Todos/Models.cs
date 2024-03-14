@@ -31,7 +31,9 @@ public enum TodoPriority { Low, High };
 
 public record CreateTodoResponse
 {
+    [Required]
     public Guid Id { get; set; }
+    [Required, MinLength(3), MaxLength(124)]
     public string Description { get; set; } = string.Empty;
     public DateTimeOffset? DueDate { get; set; }
     public TodoPriority? Priority { get; set; }
@@ -39,5 +41,5 @@ public record CreateTodoResponse
 
 public record GetTodoListResponse
 {
-    public IList<CreateTodoRequest>? List { get; set; }
+    public IList<CreateTodoResponse>? List { get; set; }
 }
