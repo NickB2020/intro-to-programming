@@ -36,3 +36,8 @@ public record CreateTodoResponse
     public DateTimeOffset? DueDate { get; set; }
     public TodoPriority? Priority { get; set; }
 }
+
+public record GetTodoListResponse
+{
+    public IList<CreateTodoRequest>? List { get; set; }
+}
